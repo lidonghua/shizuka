@@ -1,5 +1,10 @@
 class PlacesController < ApplicationController
+  before_action :set_place, only: [:show]
+
   def index
+  end
+
+  def show
   end
 
   def new
@@ -18,6 +23,10 @@ class PlacesController < ApplicationController
   end
 
   private
+  def set_place
+    @place = Place.find(params[:id])
+  end
+
   def place_params
     params.require(:place).permit(:latitude, :longitude, :mood, :things)
   end
