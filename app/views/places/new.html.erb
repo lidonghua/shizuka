@@ -1,0 +1,25 @@
+<h2>Create and Share Quiet Place</h2>
+
+<% if @place.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+    <ul>
+    <% @place.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for :place, url: places_path(latitude: @latitude, longitude: @longitude) do |f| %>
+  Latitude: <br />
+  <%= f.text_field :latitude %><br />
+  Longitude: <br />
+  <%= f.text_field :longitude %><br />
+  Mood: <br />
+  <%= f.text_field :mood %><br />
+  Things: <br />
+  <%= f.text_area :things, rows: 6 %><br />
+  <%= f.submit %>
+<% end %>
