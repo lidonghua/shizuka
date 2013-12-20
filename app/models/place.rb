@@ -1,3 +1,3 @@
 class Place < ActiveRecord::Base
-  validates :latitude, :longitude, :mood, presence: true
+  validates :latitude, :longitude, presence: true
 end
