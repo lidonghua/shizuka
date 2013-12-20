@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mood: MyString
+  things: MyText
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  mood: MyString
+  things: MyText
+  latitude: 1.5
+  longitude: 1.5
