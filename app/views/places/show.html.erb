@@ -1,3 +1,7 @@
 <p id="notice"><%= notice %></p>
 <p>Latitude <%= @place.latitude %></p>
 <p>Longitude <%= @place.longitude %></p>
+<% @place.comments.each do |c| %>
+  <p><%= c.mood %></p>
+  <p><%= c.things %></p>
+<% end %>

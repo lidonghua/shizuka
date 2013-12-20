@@ -12,11 +12,16 @@
   </div>
 <% end %>
 
-<%= form_for :place, url: places_path(latitude: @latitude, longitude: @longitude) do |f| %>
+<%= form_for @place, url: places_path do |f| %>
   Latitude: <br />
   <%= f.text_field :latitude %><br />
   Longitude: <br />
   <%= f.text_field :longitude %><br />
-  Mood: <br />
+  <%= f.fields_for @comment do |c| %>
+    Mood: <br />
+    <%= c.text_field :mood %><br />
+    Things: <br />
+    <%= c.text_area :things, rows: 6 %><br />
+  <% end %>
   <%= f.submit %>
 <% end %>

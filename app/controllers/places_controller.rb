@@ -11,10 +11,13 @@ class PlacesController < ApplicationController
     @place = Place.new
     @place.latitude = params[:latitude]
     @place.longitude = params[:longitude]
+    @comment = Comment.new
   end
 
   def create
     @place = Place.new(place_params)
+    p params[:comment]
+    @place.comments.build(comment_params)
     if @place.save
       redirect_to @place, notice: 'Place was successfully created.'
     else
@@ -29,5 +32,9 @@ class PlacesController < ApplicationController
 
   def place_params
     params.require(:place).permit(:latitude, :longitude)
+  end
+
+  def comment_params
+    params.require(:place).permit(comment: [:mood, :things])[:comment]
   end
 end
