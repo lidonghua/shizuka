@@ -5,3 +5,9 @@
   <p><%= c.mood %></p>
   <p><%= c.things %></p>
 <% end %>
+
+<%= form_for [@place, @place.comments.build] do |f| %>
+  <%= f.text_field :mood %><br />
+  <%= f.text_area :things %><br />
+  <%= f.submit "Comment" %>
+<% end %>
