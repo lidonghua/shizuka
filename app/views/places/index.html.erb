@@ -1,6 +1,6 @@
 <h1>Quiet Place</h1>
 <p>A map shows quiet palces around.</p>
-<div id="map-container">Map</div>
+<div id="map-container"></div>
 <ul>
   <% @places.each do |place| %>
     <li><%= link_to place[:location], place_path(id: place[:id]) %></li>
