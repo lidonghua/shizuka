@@ -1,3 +1,8 @@
 <h1>Quiet Place</h1>
 <p>A map shows quiet palces around.</p>
+<ul>
+  <% @places.each do |place| %>
+    <li><%= place[:location] %></li>
+  <% end %>
+</ul>
 <%= link_to 'New Quiet Place', new_place_path(latitude: 40, longitude: 120) %>

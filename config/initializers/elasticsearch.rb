@@ -8,8 +8,10 @@ unless $es.indices.exists index: "shizuka"
       place: {
         properties: {
           location: {
-            type: "geo_shape",
-            precision: "10m"
+            type: "geo_point",
+            geohash: true,
+            geohash_prefix: true,
+            geohash_precision: 10
           }
         }
       }

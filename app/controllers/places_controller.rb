@@ -2,6 +2,13 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show]
 
   def index
+    @places = Place.in_rectangle([110, 50], [130, 30]).collect do |p|
+      {
+        id: p["_id"],
+        location: p["_source"]["location"],
+        comments: p["_source"]["comments"]
+      }
+    end
   end
 
   def show
