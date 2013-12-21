@@ -9,6 +9,10 @@ class PlacesController < ApplicationController
         comments: p["_source"]["comments"]
       }
     end
+    # respond_to do |format|
+    #   format.html { render 'index' }
+    #   format.json {}
+    # end
   end
 
   def show
