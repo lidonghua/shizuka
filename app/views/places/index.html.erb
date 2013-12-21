@@ -2,7 +2,7 @@
 <p>A map shows quiet palces around.</p>
 <ul>
   <% @places.each do |place| %>
-    <li><%= place[:location] %></li>
+    <li><%= link_to place[:location], place_path(id: place[:id]) %></li>
   <% end %>
 </ul>
 <%= link_to 'New Quiet Place', new_place_path(latitude: 40, longitude: 120) %>
