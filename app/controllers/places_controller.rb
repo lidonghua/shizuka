@@ -3,10 +3,10 @@ class PlacesController < ApplicationController
 
   def index
     @places = []
-    minPos = [params[:minLat], params[:minLng]]
-    maxPos = [params[:maxLat], params[:maxLng]]
-    if minPos[0] and minPos[1] and maxPos[0] and maxPos[1]
-      @places = Place.in_rectangle(minPos, maxPos).collect do |p|
+    top_left = [params[:minLng], params[:maxLat]]
+    bottom_right = [params[:maxLng], params[:minLat]]
+    if top_left[0] and top_left[1] and bottom_right[0] and bottom_right[1]
+      @places = Place.in_rectangle(top_left, bottom_right).collect do |p|
         {
           id: p["_id"],
           location: p["_source"]["location"],

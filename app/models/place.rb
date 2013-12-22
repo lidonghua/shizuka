@@ -2,7 +2,7 @@ class Place < ActiveRecord::Base
   validates :latitude, :longitude, :comments, presence: true
   has_many :comments
 
-  def self.in_rectangle(point1, point2)
+  def self.in_rectangle(top_left, bottom_right)
     places = $es.search index: "shizuka", type: "place", body: {
       query:{
         filtered: {
@@ -12,8 +12,8 @@ class Place < ActiveRecord::Base
           filter: {
             geo_bounding_box: {
               location: {
-                top_left: point1,
-                bottom_right: point2
+                top_left: top_left,
+                bottom_right: bottom_right
               }
             }
           }

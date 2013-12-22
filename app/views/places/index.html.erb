@@ -6,4 +6,12 @@
     <li><%= link_to place[:location], place_path(id: place[:id]) %></li>
   <% end %>
 </ul>
-<%= link_to 'New Quiet Place', new_place_path(latitude: 40, longitude: 120) %>
+<div id="action-group">
+  <div id="action-new-place">
+    <a href="#" id="new-place">New Quiet Place</a>
+  </div>
+  <div id="action-add-place" style="display: none;">
+    <%= link_to 'OK', new_place_path, id: "add-place" %>
+    <a href="#" id="cancel">Cancel</a>
+  </div>
+</div>

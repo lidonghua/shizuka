@@ -2,9 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  # make dianping position defalut
-  # dpLatlng = new qq.maps.LatLng 31.215240, 121.420290
-  currentPosition = new qq.maps.LatLng 31.215240, 121.420290
+  currentPosition = new qq.maps.LatLng 31.215240, 121.420290 # DianPing
   map = new qq.maps.Map document.getElementById 'map-container'
   map.panTo currentPosition
   map.setZoom 15
@@ -14,29 +12,40 @@ jQuery ->
   # new qq.maps.Marker
   #   position: currentPosition
   #   map: map
+  marker = new qq.maps.Marker
+    position: map.getCenter()
+    map: map
+    draggable: true
+    visible: false
 
-  # TODO move following code to add place page
+  $("#new-place").click () ->
+    $("#action-add-place").show()
+    $("#action-new-place").hide()
+    marker.setPosition map.getCenter()
+    marker.setVisible true
+    false
+
+  $("#add-place").click () ->
+    position =  marker.getPosition()
+    window.location = "/places/new?latitude=" + position.lat + "&longitude=" + position.lng
+
+  $("#cancel").click () ->
+    $("#action-add-place").hide()
+    $("#action-new-place").show()
+    marker.setVisible false
+    false
+
   p_info = new qq.maps.InfoWindow
     map: map
     content: ""
     zIndex: 10
   map.info = p_info # map.window = p_info
-  marker = new qq.maps.Marker
-    position: currentPosition
-    map: map
-    draggable: true
+
     # marker.setDraggable(true);
   qq.maps.event.addListener map, "dragend", mapListener
   qq.maps.event.addListener map, "zoom_changed", mapListener
   qq.maps.event.addListener map, "click", (e) ->
     marker.setPosition e.latLng
-
-# function loadScript() {
-#   var script = document.createElement("script");
-#   script.type = "text/javascript";
-#   script.src = "http://map.qq.com/api/js?v=2.exp&callback=init";
-#   document.body.appendChild(script);
-# }
 
 mapListener = (e) ->
   map = e.target
