@@ -4,35 +4,32 @@
 $(() ->
   # make dianping position defalut
   # dpLatlng = new qq.maps.LatLng 31.215240, 121.420290
-  # myOptions
-  #   zoom: 13
-  #   center: dpLatlng
-  #   mapTypeId: qq.maps.MapTypeId.ROADMAP
-
+  currentPosition = new qq.maps.LatLng 31.215240, 121.420290
   map = new qq.maps.Map document.getElementById 'map-container'
+  map.panTo currentPosition
+  map.setZoom 15
   navigator.geolocation.getCurrentPosition (position) ->
     currentPosition = new qq.maps.LatLng position.coords.latitude, position.coords.longitude
     map.panTo currentPosition
-    map.setZoom 15
-    # new qq.maps.Marker
-    #   position: currentPosition
-    #   map: map
+  # new qq.maps.Marker
+  #   position: currentPosition
+  #   map: map
 
-    # TODO move following code to add place page
-    p_info = new qq.maps.InfoWindow
-      map: map
-      content: ""
-      zIndex: 10
-    map.info = p_info # map.window = p_info
-    marker = new qq.maps.Marker
-      position: currentPosition
-      map: map
-      draggable: true
-      # marker.setDraggable(true);
-    qq.maps.event.addListener map, "dragend", mapListener
-    qq.maps.event.addListener map, "zoom_changed", mapListener
-    qq.maps.event.addListener map, "click", (e) ->
-      marker.setPosition e.latLng
+  # TODO move following code to add place page
+  p_info = new qq.maps.InfoWindow
+    map: map
+    content: ""
+    zIndex: 10
+  map.info = p_info # map.window = p_info
+  marker = new qq.maps.Marker
+    position: currentPosition
+    map: map
+    draggable: true
+    # marker.setDraggable(true);
+  qq.maps.event.addListener map, "dragend", mapListener
+  qq.maps.event.addListener map, "zoom_changed", mapListener
+  qq.maps.event.addListener map, "click", (e) ->
+    marker.setPosition e.latLng
 )
 
 # function loadScript() {
@@ -47,7 +44,6 @@ mapListener = (e) ->
   pixel = e.pixel;
   lat = e.latLng;
   # TODO send backend ,map scope
-  console.log map.getBounds()
   # $.ajax({
     # url: "",
       # data: map.getBounds(),
