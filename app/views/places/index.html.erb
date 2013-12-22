@@ -1,11 +1,5 @@
 <h1>Quiet Place</h1>
 <p>A map shows quiet palces around.</p>
-<div id="map-container"></div>
-<ul>
-  <% @places.each do |place| %>
-    <li><%= link_to place[:location], place_path(id: place[:id]) %></li>
-  <% end %>
-</ul>
 <div id="action-group">
   <div id="action-new-place">
     <a href="#" id="new-place">New Quiet Place</a>
@@ -15,3 +9,4 @@
     <a href="#" id="cancel">Cancel</a>
   </div>
 </div>
+<div id="map-container"></div>
