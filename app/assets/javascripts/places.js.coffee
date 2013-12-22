@@ -40,9 +40,14 @@ jQuery ->
 
 mapListener = (e) ->
   map = e.target
-  position = e.latLng
+  bounds = map.getBounds()
   $.ajax(
     url: "/places.json"
+    data:
+      minLat: bounds.lat.minY
+      minLng: bounds.lng.minX
+      maxLat: bounds.lat.maxY
+      maxLng: bounds.lng.maxX
   ).done((data) ->
     drawPlaces data, map
   ).fail((error) ->

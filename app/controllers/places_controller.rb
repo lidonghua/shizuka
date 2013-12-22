@@ -2,17 +2,18 @@ class PlacesController < ApplicationController
   before_action :set_place, only: [:show]
 
   def index
-    @places = Place.in_rectangle([110, 50], [130, 30]).collect do |p|
-      {
-        id: p["_id"],
-        location: p["_source"]["location"],
-        comments: p["_source"]["comments"]
-      }
+    @places = []
+    minPos = [params[:minLat], params[:minLng]]
+    maxPos = [params[:maxLat], params[:maxLng]]
+    if minPos[0] and minPos[1] and maxPos[0] and maxPos[1]
+      @places = Place.in_rectangle(minPos, maxPos).collect do |p|
+        {
+          id: p["_id"],
+          location: p["_source"]["location"],
+          comments: p["_source"]["comments"]
+        }
+      end
     end
-    # respond_to do |format|
-    #   format.html { render 'index' }
-    #   format.json {}
-    # end
   end
 
   def show
