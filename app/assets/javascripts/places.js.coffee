@@ -4,6 +4,10 @@
 jQuery ->
   currentPosition = new qq.maps.LatLng 31.215240, 121.420290 # DianPing
   map = new qq.maps.Map document.getElementById 'map-container'
+  map.setOptions
+    panControl: false
+    zoomControl: false
+    mapTypeControl: false
   map.panTo currentPosition
   map.setZoom 15
   navigator.geolocation.getCurrentPosition (position) ->
