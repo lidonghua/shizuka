@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  */
+@import url(http://fonts.googleapis.com/css?family=IM+Fell+English);
 
 * {
   margin: 0;
@@ -19,6 +20,11 @@
 
 html, body {
   height: 100%;
+  font-family: Verdana, Arial, sans-serif;
+}
+
+h1 {
+  font-family: 'IM Fell English', Georgia, serif;
 }
 
 #container {
