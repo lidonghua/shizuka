@@ -2,10 +2,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  currentPosition = new qq.maps.LatLng 31.215240, 121.420290 # DianPing
   mapContainer = document.getElementById 'map-container'
-  unless mapContainer
+  if mapContainer
+    initMap mapContainer
     return
+  mapContainer = document.getElementById 'street-map-container'
+  if mapContainer
+    initStreetMap mapContainer
+
+initStreetMap = (mapContainer) ->
+
+initMap = (mapContainer) ->
+  currentPosition = new qq.maps.LatLng 31.215240, 121.420290 # DianPing
   map = new qq.maps.Map mapContainer
   map.setOptions
     panControl: false
@@ -40,12 +48,6 @@ jQuery ->
     $("#action-new-place").show()
     marker.setVisible false
     false
-
-  p_info = new qq.maps.InfoWindow
-    map: map
-    content: ""
-    zIndex: 10
-  map.info = p_info # map.window = p_info
 
     # marker.setDraggable(true);
   qq.maps.event.addListener map, "dragend", mapListener
@@ -84,10 +86,7 @@ drawPlaces = (data, map) ->
       map: map
     map.places.push circle
     qq.maps.event.addListener circle, 'click', (e) ->
-      info = map.window
-      info.setPosition e.latLng
-      info.setContent "My location is " + e.latLng
-      info.open()
+      window.location = "/places/" + place.id
 
 clearPlaces = (map) ->
   if map.places
