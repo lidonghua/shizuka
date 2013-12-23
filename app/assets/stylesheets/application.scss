@@ -25,10 +25,14 @@ html, body {
   background-color: $background-color;
 }
 
-h1 {
-  font-family: 'IM Fell English', Georgia, serif;
-  width: 100%;
-  text-align: center;
+#header {
+  background-color: $header-color;
+  color: white;
+  h1 {
+    font-family: 'IM Fell English', Georgia, serif;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 #container {
