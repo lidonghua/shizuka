@@ -28,6 +28,7 @@ html, body {
 #header {
   background-color: $header-color;
   color: white;
+  z-index: 1000;
   h1 {
     font-family: 'IM Fell English', Georgia, serif;
     width: 100%;

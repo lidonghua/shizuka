@@ -1,10 +1,19 @@
+<div id="header">
+  <h1>Quiet Places</h1>
+</div>
 <p id="notice"><%= notice %></p>
-<p>Latitude <%= @place.latitude %></p>
-<p>Longitude <%= @place.longitude %></p>
+
+<div id="street-map-container" lat="<%= @place.latitude %>" lng="<%= @place.longitude %>">
+</div>
+
+<div class="comment-container">
 <% @place.comments.each do |c| %>
-  <p><%= c.mood %></p>
-  <p><%= c.things %></p>
+  <div class="comment">
+    <div class="mood" style="background-color: <%= c.mood %>;"></div>
+    <div class="things"><%= c.things %></div>
+  </div>
 <% end %>
+</div>
 
 <%= form_for [@place, @place.comments.build] do |f| %>
   <%= f.text_field :mood %><br />

@@ -65,3 +65,20 @@ form {
     bottom: 0;
   }
 }
+
+.comment-container {
+  padding: $button-height / 4;
+  .comment {
+    .mood {
+      height: $button-height / 2;
+      width: $button-height / 2;
+      margin: $button-height / 4;
+      float: left;
+    }
+    .things {
+      line-height: $button-height;
+      height: $button-height;
+      font-size: $body-font-size;
+    }
+  }
+}
