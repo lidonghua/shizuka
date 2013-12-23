@@ -8,11 +8,6 @@
   height: 100%;
 }
 
-h1 {
-  position: fixed;
-  z-index: 1000;
-}
-
 #action-group {
   position: fixed;
   width: 100%;
@@ -50,6 +45,10 @@ form {
     width: 100%;
     padding: 0 10px;
   }
+  .form-label {
+    clear: both;
+    border-top: 1px solid $border-color;
+  }
   textarea {
     width: 100%;
     line-height: $button-height;
@@ -66,7 +65,11 @@ form {
   }
 }
 
-.comment-container {
+#main {
+  padding: $button-height 0 $button-height / 2;
+}
+
+#comment-container {
   padding: $button-height / 4;
   .comment {
     .mood {
@@ -79,6 +82,18 @@ form {
       line-height: $button-height;
       height: $button-height;
       font-size: $body-font-size;
+    }
+  }
+}
+
+#colors {
+  div {
+    a {
+      display: block;
+      margin: $button-height / 2;
+      height: $button-height;
+      width: $button-height;
+      float: left;
     }
   }
 }

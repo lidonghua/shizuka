@@ -2,26 +2,28 @@
   <h1>Create and Share</h1>
 </div>
 
-<% if @place.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
+<div id="main">
+  <% if @place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
 
-    <ul>
-    <% @place.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_for @place, url: places_path do |f| %>
-  <%= f.hidden_field :latitude %>
-  <%= f.hidden_field :longitude %>
-  <%= f.fields_for @comment do |c| %>
-    <div class="form-label">Choose a color of your mood:</div>
-    <%= c.text_field :mood %>
-    <div class="form-label">Write down what you're doing:</div>
-    <%= c.text_area :things, rows: 6, placeholder: "The book you're reading...\nThe music you're listening...\nThe coffee you're drinking...\nOr something else..." %>
+      <ul>
+      <% @place.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-  <%= f.submit %>
-<% end %>
+
+  <%= form_for @place, url: places_path do |f| %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+    <%= f.fields_for @comment do |c| %>
+      <div class="form-label">Choose a color of your mood:</div>
+      <%= c.text_field :mood %>
+      <div class="form-label">Write down what you're doing:</div>
+      <%= c.text_area :things, rows: 6, placeholder: "The book you're reading...\nThe music you're listening...\nThe coffee you're drinking...\nOr something else..." %>
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+</div>
