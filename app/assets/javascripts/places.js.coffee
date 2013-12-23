@@ -13,6 +13,7 @@ jQuery ->
   navigator.geolocation.getCurrentPosition (position) ->
     currentPosition = new qq.maps.LatLng position.coords.latitude, position.coords.longitude
     map.panTo currentPosition
+    loadPlaces map
   # new qq.maps.Marker
   #   position: currentPosition
   #   map: map
@@ -52,7 +53,9 @@ jQuery ->
     marker.setPosition e.latLng
 
 mapListener = (e) ->
-  map = e.target
+  loadPlaces e.target
+
+loadPlaces = (map) ->
   bounds = map.getBounds()
   $.ajax(
     url: "/places.json"
@@ -74,7 +77,7 @@ drawPlaces = (data, map) ->
       center: new qq.maps.LatLng place.location.lat, place.location.lon # lon is for lng, sorry
       visible: true
       radius: 50
-      strokeWeight: 1
+      strokeWeight: 0
       fillColor: "#11e"
       map: map
     qq.maps.event.addListener circle, 'click', (e) ->
