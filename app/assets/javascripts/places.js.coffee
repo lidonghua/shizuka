@@ -3,7 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   currentPosition = new qq.maps.LatLng 31.215240, 121.420290 # DianPing
-  map = new qq.maps.Map document.getElementById 'map-container'
+  mapContainer = document.getElementById 'map-container'
+  unless mapContainer
+    return
+  map = new qq.maps.Map mapContainer
   map.setOptions
     panControl: false
     zoomControl: false

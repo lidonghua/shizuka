@@ -1,4 +1,6 @@
-<h2>Create and Share Quiet Place</h2>
+<div id="header">
+  <h1>Create and Share</h1>
+</div>
 
 <% if @place.errors.any? %>
   <div id="error_explanation">
@@ -13,15 +15,13 @@
 <% end %>
 
 <%= form_for @place, url: places_path do |f| %>
-  Latitude: <br />
-  <%= f.text_field :latitude %><br />
-  Longitude: <br />
-  <%= f.text_field :longitude %><br />
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
   <%= f.fields_for @comment do |c| %>
-    Mood: <br />
-    <%= c.text_field :mood %><br />
-    Things: <br />
-    <%= c.text_area :things, rows: 6 %><br />
+    <div class="form-label">Choose a color of your mood:</div>
+    <%= c.text_field :mood %>
+    <div class="form-label">Write down what you're doing:</div>
+    <%= c.text_area :things, rows: 6, placeholder: "The book you're reading...\nThe music you're listening...\nThe coffee you're drinking...\nOr something else..." %>
   <% end %>
   <%= f.submit %>
 <% end %>

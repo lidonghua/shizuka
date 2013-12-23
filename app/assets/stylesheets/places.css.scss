@@ -10,8 +10,6 @@
 
 h1 {
   position: fixed;
-  width: 100%;
-  text-align: center;
   z-index: 1000;
 }
 
@@ -37,5 +35,29 @@ h1 {
   }
   #action-add-place a {
     width: 50%;
+  }
+}
+
+form {
+  font-size: $body-font-size;
+  input, .form-label {
+    line-height: $button-height;
+    height: $button-height;
+    width: 100%;
+    padding: 0 10px;
+  }
+  textarea {
+    width: 100%;
+    line-height: $button-height;
+    font-size: $body-font-size;
+    padding: 0 10px;
+  }
+  input[type="submit"] {
+    border: none;
+    background-color: $button-color;
+    color: $button-text-color;
+    font-size: $body-font-size;
+    position: fixed;
+    bottom: 0;
   }
 }
