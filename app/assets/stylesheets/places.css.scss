@@ -19,12 +19,13 @@ h1 {
   height: $button-height;
   bottom: 0;
   z-index: 1000;
-  background-color: white;
+  background-color: $button-color;
   div {
     height: 100%;
     width: 100%;
     a {
       display: block;
+      color: $button-text-color;
       height: 100%;
       width: 100%;
       text-align: center;
@@ -35,6 +36,9 @@ h1 {
   }
   #action-add-place a {
     width: 50%;
+  }
+  #cancel {
+    background-color: $cancel-button-color;
   }
 }
 
