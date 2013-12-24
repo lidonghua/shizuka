@@ -20,7 +20,11 @@
     <%= f.hidden_field :longitude %>
     <%= f.fields_for @comment do |c| %>
       <div class="form-label">Choose a color of your mood:</div>
-      <%= c.text_field :mood %>
+      <div id="colors">
+        <div><a href="#" class="color-picker" style="background-color: #f31;"></a></div>
+        <div><a href="#" class="color-picker" style="background-color: #146;"></a></div>
+      </div>
+      <%= c.hidden_field :mood, id: "comment_mood" %>
       <div class="form-label">Write down what you're doing:</div>
       <%= c.text_area :things, rows: 6, placeholder: "The book you're reading...\nThe music you're listening...\nThe coffee you're drinking...\nOr something else..." %>
     <% end %>

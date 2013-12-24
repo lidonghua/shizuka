@@ -1,7 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-jQuery ->
+ready = ->
   mapContainer = document.getElementById 'map-container'
   if mapContainer
     initMap mapContainer
@@ -12,6 +12,9 @@ jQuery ->
   $('.color-picker').click () ->
     color = $(this).attr('style').match(/.*background-color:.*(#[abcdef\d]+).*/)[1]
     $('#comment_mood').val color
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
 
 initStreetMap = (mapContainer) ->
 

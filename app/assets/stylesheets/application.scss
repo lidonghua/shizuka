@@ -29,9 +29,14 @@ html, body {
   position: fixed;
   width: 100%;
   background-color: $header-color;
-  color: white;
   z-index: 1000;
   h1 {
+    a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+    color: white;
     font-family: 'IM Fell English', Georgia, serif;
     text-align: center;
   }
