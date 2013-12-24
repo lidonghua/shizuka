@@ -9,6 +9,9 @@ jQuery ->
   mapContainer = document.getElementById 'street-map-container'
   if mapContainer
     initStreetMap mapContainer
+  $('.color-picker').click () ->
+    color = $(this).attr('style').match(/.*background-color:.*(#[abcdef\d]+).*/)[1]
+    $('#comment_mood').val color
 
 initStreetMap = (mapContainer) ->
 
