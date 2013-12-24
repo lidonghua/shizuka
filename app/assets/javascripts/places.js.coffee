@@ -37,6 +37,7 @@ initMap = (mapContainer) ->
     map: map
     draggable: true
     visible: false
+    animation: qq.maps.MarkerAnimation.BOUNCE
 
   $("#new-place").click () ->
     $("#action-add-place").show()
@@ -83,12 +84,9 @@ drawPlaces = (data, map) ->
   # data = [{id , mood, location{lat,lon}}, ...]
   clearPlaces map
   for place in data
-    circle = new qq.maps.Circle
-      center: new qq.maps.LatLng place.location.lat, place.location.lon # lon is for lng, sorry
+    circle = new qq.maps.Marker
+      position: new qq.maps.LatLng place.location.lat, place.location.lon # lon is for lng, sorry
       visible: true
-      radius: 50
-      strokeWeight: 0
-      fillColor: "#11e"
       map: map
     map.places.push circle
     qq.maps.event.addListener circle, 'click', (e) ->

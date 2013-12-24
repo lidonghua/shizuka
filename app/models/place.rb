@@ -2,6 +2,13 @@ class Place < ActiveRecord::Base
   validates :latitude, :longitude, :comments, presence: true
   has_many :comments
 
+  def get_color
+    color = 0
+    @comments.each do |c|
+      c.mood
+    end
+  end
+
   def self.in_rectangle(top_left, bottom_right)
     places = $es.search index: "shizuka", type: "place", body: {
       query:{
