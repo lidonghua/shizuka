@@ -89,8 +89,9 @@ drawPlaces = (data, map) ->
       visible: true
       map: map
     map.places.push circle
-    qq.maps.event.addListener circle, 'click', (e) ->
-      window.location = "/places/" + place.id
+    do (place) ->
+      qq.maps.event.addListener circle, 'click', (e) ->
+        window.location = "/places/" + place.id
 
 clearPlaces = (map) ->
   if map.places
